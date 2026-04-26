@@ -5,25 +5,25 @@ import { Link } from 'react-router-dom';
 
 const blogs = [
   {
-    title: "BiPAP vs CPAP: Choosing the Right Respiratory Support for Your ICU",
-    category: "Technical Guide",
-    excerpt: "Understanding the pressure dynamics and patient synchronization required for critical respiratory care.",
-    image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=400",
-    date: "May 15, 2024"
+    title: "The Complete Guide to Vaccine Transportation & Cold Chain Integrity",
+    category: "Cold Chain",
+    excerpt: "Ensuring 100% compliance during vaccine transit is critical. Learn about the latest cooling technologies.",
+    image: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80&w=1200",
+    date: "24/04/2024"
   },
   {
-    title: "NABH Audit Checklist: Equipment Documentation Your Hospital Needs",
+    title: "Blood Bank Refrigerator Buying Guide: 5 Metrics That Matter",
+    category: "Blood Bank",
+    excerpt: "From temperature uniformity to battery backup — what hospital procurement teams must verify.",
+    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1200",
+    date: "12/04/2024"
+  },
+  {
+    title: "Medical Equipment Maintenance: NABH Audit Readiness 2024",
     category: "Compliance",
-    excerpt: "Ensure your facility is ready for accreditation with proper Form MD-15 and maintenance logs.",
-    image: "https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&q=80&w=400",
-    date: "June 02, 2024"
-  },
-  {
-    title: "Rent vs. Buy Medical Equipment: A Financial Guide for Home Care",
-    category: "Home Care",
-    excerpt: "A breakdown of long-term costs for oxygen concentrators and patient beds in post-discharge care.",
-    image: "https://images.unsplash.com/photo-1576765608598-13201402867d?auto=format&fit=crop&q=80&w=400",
-    date: "July 10, 2024"
+    excerpt: "Ensure your facility passes every inspection with our updated documentation and calibration checklist.",
+    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200",
+    date: "15/03/2024"
   }
 ];
 

@@ -17,7 +17,7 @@ const buyers = [
     desc: "Scalable solutions for 50–500 bed hospitals. ISO compliance and NABH audit-ready documentation.",
     color: "brand-blue",
     message: "Hi, I'm from hospital procurement. Need bulk quote and datasheets.",
-    image: "https://images.unsplash.com/photo-1586773860418-d373a5634a78?auto=format&fit=crop&q=80&w=800"
+    image: "https://www.hospertz.com/wp-content/uploads/2024/07/gal1.jpg"
   },
   {
     title: "Home Care & Families",
@@ -33,8 +33,8 @@ const WhoWeServe = () => {
   return (
     <section className="py-32 bg-[#F8FAFB] relative overflow-hidden">
       {/* Dynamic Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
-        style={{ backgroundImage: 'radial-gradient(#1A7A8A 0.5px, transparent 0.5px)', backgroundSize: '24px 24px' }} 
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
+        style={{ backgroundImage: 'radial-gradient(#1A7A8A 0.5px, transparent 0.5px)', backgroundSize: '24px 24px' }}
       />
 
       <div className="container mx-auto px-4 relative z-10">
@@ -54,7 +54,7 @@ const WhoWeServe = () => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-blue">Every Healthcare Environment</span>
             </h2>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -79,9 +79,9 @@ const WhoWeServe = () => {
             >
               {/* Image Background with Complex Masking */}
               <div className="absolute inset-0 h-2/3 overflow-hidden">
-                <img 
-                  src={buyer.image} 
-                  alt={buyer.title} 
+                <img
+                  src={buyer.image}
+                  alt={buyer.title}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/40 via-transparent to-white" />
@@ -103,7 +103,7 @@ const WhoWeServe = () => {
                       {buyer.desc}
                     </p>
 
-                    <a 
+                    <a
                       href={`https://wa.me/919112223296?text=${encodeURIComponent(buyer.message)}`}
                       target="_blank"
                       rel="noopener noreferrer"

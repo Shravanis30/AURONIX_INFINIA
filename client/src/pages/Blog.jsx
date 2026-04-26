@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Calendar, User, ArrowRight, Clock, Tag, BookOpen, ChevronRight, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Search, Calendar, User, ArrowRight, Clock, Tag, BookOpen, ChevronRight, Mail, ArrowUpRight } from 'lucide-react';
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -8,105 +9,129 @@ const Blog = () => {
 
   const posts = [
     {
-      title: "BiPAP vs CPAP: Choosing the Right Respiratory Support for Your ICU",
-      category: "Technical Guide",
-      excerpt: "Understanding the pressure dynamics and patient synchronization required for critical respiratory care in modern ICUs.",
-      image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=900",
-      date: "May 15, 2024",
+      title: "The Complete Guide to Vaccine Transportation & Cold Chain Integrity",
+      category: "Cold Chain",
+      excerpt: "Ensuring 100% compliance during vaccine transit is critical. Learn about the latest in passive vs active cooling technologies.",
+      image: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80&w=1200",
+      date: "24/04/2024",
       author: "Biomedical Team",
-      readTime: "6 min read",
+      readTime: "10 min read",
       featured: true,
-      tags: ["Respiratory", "ICU", "Ventilators"],
+      tags: ["Vaccines", "Cold Chain", "Logistics"],
     },
     {
-      title: "NABH Audit Checklist: Equipment Documentation Your Hospital Needs",
-      category: "Compliance",
-      excerpt: "Ensure your facility is ready for accreditation with proper Form MD-15 and maintenance logs.",
-      image: "https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&q=80&w=900",
-      date: "June 02, 2024",
-      author: "Quality Dept",
+      title: "Blood Bank Refrigerator Buying Guide: 5 Metrics That Matter",
+      category: "Blood Bank",
+      excerpt: "From temperature uniformity to battery backup — what hospital procurement teams must verify before buying.",
+      image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1200",
+      date: "12/04/2024",
+      author: "Technical Expert",
       readTime: "8 min read",
-      tags: ["NABH", "Compliance", "Documentation"],
+      tags: ["Blood Bank", "Buying Guide", "Standards"],
     },
     {
-      title: "Rent vs. Buy Medical Equipment: A Financial Guide for Home Care",
+      title: "Ice Lined Refrigerators: Price, Maintenance, and Solar Options",
+      category: "Cold Chain",
+      excerpt: "A comprehensive breakdown of ILR technology for rural healthcare centers with intermittent power supply.",
+      image: "https://images.unsplash.com/photo-1583324113626-70df0f4deaab?auto=format&fit=crop&q=80&w=1200",
+      date: "05/04/2024",
+      author: "Field Team",
+      readTime: "12 min read",
+      tags: ["ILR", "Solar", "Rural Health"],
+    },
+    {
+      title: "ULT Freezer -86°C: Calibration and Long-term Stability Protocols",
+      category: "Storage",
+      excerpt: "How to maintain ultra-low temperatures for sensitive biological samples and DNA research libraries.",
+      image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80&w=1200",
+      date: "28/03/2024",
+      author: "Biomedical Team",
+      readTime: "15 min read",
+      tags: ["ULT", "Calibration", "Research"],
+    },
+    {
+      title: "Medical Equipment Maintenance: NABH Audit Readiness 2024",
+      category: "Compliance",
+      excerpt: "Ensure your facility passes every inspection with our updated documentation and calibration checklist.",
+      image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200",
+      date: "15/03/2024",
+      author: "Quality Head",
+      readTime: "20 min read",
+      tags: ["NABH", "Audit", "Compliance"],
+    },
+    {
+      title: "Modular OT Systems: Efficiency and Infection Control Standards",
+      category: "Surgery",
+      excerpt: "Designing sterile environments for modern surgeries. A look into airflow systems and antimicrobial wall panels.",
+      image: "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=1200",
+      date: "02/03/2024",
+      author: "Infra Team",
+      readTime: "18 min read",
+      tags: ["Modular OT", "Sterilization", "Design"],
+    },
+    {
+      title: "How to Choose the Right Laboratory Freezer for Sensitive Samples",
+      category: "Storage",
+      excerpt: "Not all freezers are created equal. Discover the critical differences between spark-proof, flammable storage, and standard lab units.",
+      image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80&w=1200",
+      date: "25/02/2024",
+      author: "Lab Specialist",
+      readTime: "12 min read",
+      tags: ["Laboratory", "Storage", "Safety"],
+    },
+    {
+      title: "Solar-Powered Medical Refrigeration: A Game Changer for Rural Health",
+      category: "Cold Chain",
+      excerpt: "Bridging the energy gap in remote locations. How SDD (Solar Direct Drive) technology is saving lives in off-grid areas.",
+      image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=1200",
+      date: "18/02/2024",
+      author: "Field Engineer",
+      readTime: "9 min read",
+      tags: ["Solar", "Rural Health", "Innovation"],
+    },
+    {
+      title: "Oxygen Concentrators: Maintenance Checklist for Long-Term Home Care",
       category: "Home Care",
-      excerpt: "A breakdown of long-term costs for oxygen concentrators and patient beds in post-discharge care.",
-      image: "https://images.unsplash.com/photo-1576765608598-13201402867d?auto=format&fit=crop&q=80&w=900",
-      date: "July 10, 2024",
-      author: "Consultancy Team",
-      readTime: "5 min read",
-      tags: ["Home Care", "Finance", "Oxygen"],
-    },
-    {
-      title: "Maintaining ICU Ventilators: Best Practices for Biomedical Engineers",
-      category: "Maintenance",
-      excerpt: "Weekly, monthly, and quarterly checklists to prevent critical failures in high-pressure environments.",
-      image: "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?auto=format&fit=crop&q=80&w=900",
-      date: "August 20, 2024",
+      excerpt: "Keep your devices running at peak efficiency. Simple weekly and monthly steps to ensure high-purity oxygen delivery.",
+      image: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80&w=900",
+      date: "10/02/2024",
       author: "Service Team",
       readTime: "7 min read",
-      tags: ["Ventilators", "Maintenance", "Biomedical"],
+      tags: ["Oxygen", "Home Care", "Maintenance"],
     },
     {
-      title: "Patient Monitoring Systems: What Every Nurse Should Know",
-      category: "Technical Guide",
-      excerpt: "From SpO2 sensors to invasive pressure lines — a nurse-friendly guide to bedside monitors.",
-      image: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&q=80&w=900",
-      date: "September 05, 2024",
-      author: "Clinical Team",
-      readTime: "4 min read",
-      tags: ["Monitoring", "Clinical", "Nursing"],
+      title: "The Future of Smart Hospitals: IoT in Medical Gas Systems",
+      category: "Innovation",
+      excerpt: "Real-time monitoring of oxygen levels and pressure drops. How connected sensors are preventing critical hospital emergencies.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=900",
+      date: "05/02/2024",
+      author: "Tech Lead",
+      readTime: "11 min read",
+      tags: ["IoT", "Smart Hospital", "Safety"],
     },
     {
-      title: "OT Table Selection Guide: Electro-Hydraulic vs Mechanical for Tier-2 Hospitals",
-      category: "Technical Guide",
-      excerpt: "A comparison of OT table types for varied surgical specialties, budget constraints, and maintenance ease.",
-      image: "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=900",
-      date: "October 12, 2024",
-      author: "Biomedical Team",
-      readTime: "9 min read",
-      tags: ["OT", "Surgical", "Equipment"],
-    },
-    {
-      title: "How to Write an Effective AMC Proposal for Government Hospitals",
-      category: "Compliance",
-      excerpt: "Winning Annual Maintenance Contracts requires more than pricing — here's what decision-makers look for.",
-      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=900",
-      date: "November 01, 2024",
-      author: "Sales & Compliance",
+      title: "Decontamination Protocols for Shared Patient Equipment",
+      category: "Clinical",
+      excerpt: "Best practices for cleaning and disinfecting high-touch surfaces in multi-patient settings to prevent HAIs.",
+      image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=900",
+      date: "28/01/2024",
+      author: "Nursing Lead",
       readTime: "6 min read",
-      tags: ["AMC", "Government", "Sales"],
-    },
-    {
-      title: "Infusion Pump Calibration: Step-by-Step Field Guide",
-      category: "Maintenance",
-      excerpt: "Proper calibration procedures for syringe and volumetric pumps to ensure accurate drug delivery.",
-      image: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&q=80&w=900",
-      date: "December 08, 2024",
-      author: "Service Team",
-      readTime: "5 min read",
-      tags: ["Infusion", "Calibration", "Drug Safety"],
-    },
-    {
-      title: "Top 5 Red Flags During Medical Equipment Procurement",
-      category: "Home Care",
-      excerpt: "Avoid costly mistakes and counterfeit devices — what hospitals and home care buyers must verify before purchase.",
-      image: "https://images.unsplash.com/photo-1618498082410-b4aa22193b38?auto=format&fit=crop&q=80&w=900",
-      date: "January 18, 2025",
-      author: "Consultancy Team",
-      readTime: "4 min read",
-      tags: ["Procurement", "Quality", "Buyer Guide"],
-    },
+      tags: ["Clinical", "Sterilization", "HAI"],
+    }
   ];
+
+  const [selectedPost, setSelectedPost] = useState(null);
 
   const categories = ['All', ...new Set(posts.map(p => p.category))];
 
   const categoryColors = {
-    'Technical Guide': { bg: 'bg-blue-100', text: 'text-blue-700', dot: 'bg-blue-500' },
-    'Compliance': { bg: 'bg-purple-100', text: 'text-purple-700', dot: 'bg-purple-500' },
-    'Home Care': { bg: 'bg-green-100', text: 'text-green-700', dot: 'bg-green-500' },
-    'Maintenance': { bg: 'bg-orange-100', text: 'text-orange-700', dot: 'bg-orange-500' },
+    'Cold Chain': { bg: 'bg-blue-100', text: 'text-brand-teal', dot: 'bg-brand-teal' },
+    'Blood Bank': { bg: 'bg-red-100', text: 'text-red-700', dot: 'bg-red-500' },
+    'Storage': { bg: 'bg-purple-100', text: 'text-purple-700', dot: 'bg-purple-500' },
+    'Compliance': { bg: 'bg-green-100', text: 'text-green-700', dot: 'bg-green-500' },
+    'Clinical': { bg: 'bg-yellow-100', text: 'text-yellow-700', dot: 'bg-yellow-500' },
+    'Innovation': { bg: 'bg-indigo-100', text: 'text-indigo-700', dot: 'bg-indigo-500' },
   };
 
   const filtered = posts.filter(p => {
@@ -114,268 +139,311 @@ const Blog = () => {
     const matchSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       p.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     return matchCat && matchSearch;
-  }).filter(p => !p.featured || activeCategory !== 'All' || searchQuery);
+  });
 
   const featured = posts.find(p => p.featured);
 
   return (
-    <div className="pt-20">
-      {/* Hero Header */}
-      <section className="bg-blueprint py-28 border-b border-gray-100 relative overflow-hidden">
-        <div className="absolute -top-10 right-0 w-96 h-96 bg-brand-teal/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="container mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="text-center max-w-3xl mx-auto">
-            <span className="inline-flex items-center gap-2 bg-brand-teal/10 text-brand-teal text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5 border border-brand-teal/20">
-              <BookOpen size={14} /> Knowledge Hub
-            </span>
-            <h1 className="text-6xl font-heading font-extrabold text-brand-navy mb-6 leading-tight">
-              Knowledge <span className="text-brand-teal">Resources</span>
-            </h1>
-            <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-10">
-              Deep-dives into medical technology, compliance standards, maintenance protocols, and healthcare operational efficiency.
-            </p>
-
-            {/* Search Bar */}
-            <div className="max-w-xl mx-auto bg-white p-2 rounded-2xl shadow-2xl flex items-center border border-gray-100">
-              <Search className="text-gray-400 ml-4 shrink-0" size={20} />
-              <input
-                type="text"
-                placeholder="Search articles, guides, or topics..."
-                className="flex-grow px-4 py-3 outline-none text-brand-navy placeholder-gray-400 bg-transparent"
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
-              />
-              {searchQuery && (
-                <button onClick={() => setSearchQuery('')} className="text-gray-400 hover:text-brand-navy px-3 text-lg">&times;</button>
-              )}
-              <button className="bg-brand-teal hover:bg-brand-navy text-white px-7 py-3 rounded-xl font-bold transition-colors shrink-0">
-                Search
-              </button>
-            </div>
-          </motion.div>
-
-          {/* Category Pills */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-3 mt-10"
-          >
-            {categories.map(cat => {
-              const c = categoryColors[cat];
-              return (
-                <button
-                  key={cat}
-                  onClick={() => { setActiveCategory(cat); setSearchQuery(''); }}
-                  className={`px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 border ${
-                    activeCategory === cat
-                      ? 'bg-brand-teal text-white border-brand-teal shadow-lg scale-105'
-                      : 'bg-white text-gray-500 border-gray-200 hover:border-brand-teal hover:text-brand-teal'
-                  }`}
-                >
-                  {cat === 'All' ? 'All Articles' : cat}
-                  <span className="ml-1.5 opacity-60 text-xs">
-                    ({cat === 'All' ? posts.length : posts.filter(p => p.category === cat).length})
-                  </span>
-                </button>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Featured Post — only shown on 'All' with no search */}
+    <div className="pt-20 bg-[#F9FBFC] min-h-screen">
       <AnimatePresence>
-        {activeCategory === 'All' && !searchQuery && featured && (
-          <motion.section
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-            className="py-16"
+        {selectedPost ? (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            className="fixed inset-0 z-[100] bg-white overflow-y-auto"
           >
-            <div className="container mx-auto px-4">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="h-1 w-8 bg-brand-teal rounded-full" />
-                <h2 className="text-sm font-bold uppercase tracking-widest text-brand-teal">Featured Article</h2>
-              </div>
-              <motion.div
-                className="group grid lg:grid-cols-2 gap-0 bg-white rounded-[40px] overflow-hidden shadow-2xl border border-gray-100 cursor-pointer"
-                whileHover={{ y: -4 }}
-                transition={{ type: 'spring', damping: 20 }}
+            <div className="container mx-auto px-4 py-20 relative">
+              <button 
+                onClick={() => setSelectedPost(null)}
+                className="fixed top-24 left-8 md:left-24 bg-brand-navy text-white p-4 rounded-full shadow-2xl hover:bg-brand-teal transition-all z-10"
               >
-                <div className="h-[350px] lg:h-full relative overflow-hidden">
-                  <img src={featured.image} alt="featured" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute top-8 left-8 bg-brand-orange text-white px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-widest shadow-lg">
-                    Featured Article
-                  </div>
+                <ArrowRight className="rotate-180" size={24} />
+              </button>
+
+              <div className="max-w-4xl mx-auto">
+                <div className="flex items-center gap-4 mb-8">
+                  <span className="px-4 py-2 bg-brand-teal/10 text-brand-teal rounded-full text-xs font-black uppercase tracking-widest">
+                    {selectedPost.category}
+                  </span>
+                  <span className="text-gray-400 text-sm font-bold uppercase tracking-widest flex items-center gap-2">
+                    <Calendar size={16} /> {selectedPost.date}
+                  </span>
                 </div>
-                <div className="p-12 lg:p-16 flex flex-col justify-center">
-                  <div className="flex flex-wrap items-center gap-3 mb-6">
-                    {(() => { const c = categoryColors[featured.category]; return (
-                      <span className={`text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full ${c.bg} ${c.text}`}>
-                        {featured.category}
-                      </span>
-                    ); })()}
-                    <span className="flex items-center gap-1.5 text-gray-400 text-xs"><Clock size={12} />{featured.readTime}</span>
+
+                <h1 className="text-5xl md:text-6xl font-heading font-black text-brand-navy mb-12 leading-tight">
+                  {selectedPost.title}
+                </h1>
+
+                <div className="aspect-video rounded-[3rem] overflow-hidden mb-16 shadow-2xl">
+                  <img src={selectedPost.image} alt={selectedPost.title} className="w-full h-full object-cover" />
+                </div>
+
+                <div className="prose prose-xl max-w-none text-gray-600 leading-relaxed space-y-8">
+                  <p className="text-2xl font-medium text-brand-navy/80 italic border-l-4 border-brand-teal pl-8 mb-12">
+                    {selectedPost.excerpt}
+                  </p>
+                  
+                  <h2 className="text-3xl font-heading font-bold text-brand-navy mt-16">Understanding the Core Requirements</h2>
+                  <p>
+                    In the rapidly evolving landscape of medical technology, staying compliant while maintaining operational efficiency is the cornerstone of any modern healthcare facility. This detailed guide explores the nuances of {selectedPost.category.toLowerCase()} and how {selectedPost.tags[0]} play a vital role in patient safety.
+                  </p>
+
+                  <div className="bg-blueprint p-10 rounded-[2rem] border border-gray-100 my-16">
+                    <h3 className="text-xl font-bold text-brand-navy mb-4 flex items-center gap-3">
+                      <BookOpen className="text-brand-teal" /> Key Takeaways
+                    </h3>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0">
+                      {["Equipment Precision", "Regulatory Compliance", "Patient-Centric Care", "Operational Stability"].map(item => (
+                        <li key={item} className="flex items-center gap-2 text-sm font-bold text-brand-navy/70 uppercase tracking-widest">
+                          <div className="w-1.5 h-1.5 bg-brand-teal rounded-full" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <div className="flex items-center gap-4 text-gray-400 text-xs font-semibold uppercase tracking-wider mb-5">
-                    <span className="flex items-center gap-1.5"><Calendar size={13} />{featured.date}</span>
-                    <span className="flex items-center gap-1.5"><User size={13} />{featured.author}</span>
+
+                  <h2 className="text-3xl font-heading font-bold text-brand-navy">Implementation Strategy</h2>
+                  <p>
+                    Deploying these solutions requires a multi-faceted approach involving biomedical engineers, quality control departments, and frontline clinicians. By standardizing {selectedPost.tags[1]} and {selectedPost.tags[2]}, hospitals can significantly reduce downtime and improve outcomes.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-16">
+                    <div className="p-8 bg-white border border-gray-100 rounded-3xl shadow-sm">
+                      <div className="text-brand-teal font-black text-4xl mb-4">01</div>
+                      <div className="font-bold text-brand-navy mb-2 uppercase text-xs tracking-widest">Assessment</div>
+                      <p className="text-xs text-gray-500">Thorough evaluation of existing infrastructure.</p>
+                    </div>
+                    <div className="p-8 bg-white border border-gray-100 rounded-3xl shadow-sm">
+                      <div className="text-brand-teal font-black text-4xl mb-4">02</div>
+                      <div className="font-bold text-brand-navy mb-2 uppercase text-xs tracking-widest">Integration</div>
+                      <p className="text-xs text-gray-500">Seamless blending with existing hospital protocols.</p>
+                    </div>
+                    <div className="p-8 bg-white border border-gray-100 rounded-3xl shadow-sm">
+                      <div className="text-brand-teal font-black text-4xl mb-4">03</div>
+                      <div className="font-bold text-brand-navy mb-2 uppercase text-xs tracking-widest">Optimization</div>
+                      <p className="text-xs text-gray-500">Continuous monitoring and data-driven updates.</p>
+                    </div>
                   </div>
-                  <h2 className="text-3xl font-heading font-extrabold text-brand-navy mb-5 leading-tight group-hover:text-brand-teal transition-colors">
-                    {featured.title}
-                  </h2>
-                  <p className="text-gray-500 leading-relaxed mb-8">{featured.excerpt}</p>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {featured.tags.map(tag => (
-                      <span key={tag} className="bg-gray-100 text-gray-500 text-xs px-3 py-1 rounded-full border border-gray-200">
-                        #{tag}
-                      </span>
-                    ))}
+
+                  <h2 className="text-3xl font-heading font-bold text-brand-navy text-center my-20">Auronix: Your Partner in Excellence</h2>
+                </div>
+
+                <div className="mt-20 pt-12 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-8">
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 bg-brand-navy rounded-full flex items-center justify-center text-white font-black text-xl">
+                      A
+                    </div>
+                    <div>
+                      <div className="font-bold text-brand-navy">{selectedPost.author}</div>
+                      <div className="text-sm text-gray-400 font-medium uppercase tracking-widest">Expert Editorial Team</div>
+                    </div>
                   </div>
-                  <button className="self-start flex items-center gap-3 bg-brand-teal hover:bg-brand-navy text-white font-bold px-7 py-3 rounded-xl transition-all duration-300 group/btn shadow-lg">
-                    <span>Read Full Article</span>
-                    <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                  <button className="bg-brand-teal text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-brand-navy transition-all shadow-xl">
+                    SHARE ARTICLE
                   </button>
                 </div>
-              </motion.div>
-            </div>
-          </motion.section>
-        )}
-      </AnimatePresence>
+              </div>
 
-      {/* Article Grid */}
-      <section className="pb-24 bg-gray-50">
-        <div className="container mx-auto px-4 pt-16">
-          {/* Section Label */}
-          {activeCategory === 'All' && !searchQuery && (
-            <div className="flex items-center gap-3 mb-10">
-              <div className="h-1 w-8 bg-brand-teal rounded-full" />
-              <h2 className="text-sm font-bold uppercase tracking-widest text-brand-teal">More Articles</h2>
-            </div>
-          )}
-          {(activeCategory !== 'All' || searchQuery) && (
-            <div className="flex items-center justify-between mb-10">
-              <div className="flex items-center gap-3">
-                <div className="h-1 w-8 bg-brand-teal rounded-full" />
-                <h2 className="text-sm font-bold uppercase tracking-widest text-brand-teal">
-                  {searchQuery ? `Results for "${searchQuery}"` : activeCategory}
-                  <span className="ml-2 text-gray-400 normal-case">({(activeCategory === 'All' ? posts : posts.filter(p => p.category === activeCategory)).filter(p => p.title.toLowerCase().includes(searchQuery.toLowerCase()) || p.excerpt.toLowerCase().includes(searchQuery.toLowerCase())).length} articles)</span>
-                </h2>
+              {/* Sidebar with Recent Blogs (Marken Style) */}
+              <div className="max-w-4xl mx-auto mt-32">
+                <h3 className="text-sm font-black uppercase tracking-[0.4em] text-brand-teal mb-10">You Might Also Like</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {posts.filter(p => p.title !== selectedPost.title).slice(0, 2).map(p => (
+                    <div 
+                      key={p.title} 
+                      className="group cursor-pointer"
+                      onClick={() => {
+                        setSelectedPost(p);
+                        window.scrollTo(0, 0);
+                      }}
+                    >
+                      <div className="aspect-video rounded-3xl overflow-hidden mb-4">
+                        <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      </div>
+                      <h4 className="font-bold text-brand-navy group-hover:text-brand-teal transition-colors">{p.title}</h4>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          )}
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+      {/* Header Section */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-brand-teal/10 rounded-full mb-6"
+            >
+              <BookOpen size={16} className="text-brand-teal" />
+              <span className="text-brand-teal text-xs font-bold uppercase tracking-[0.4em]">Resource Center</span>
+            </motion.div>
+            <h1 className="text-6xl md:text-7xl font-heading font-black text-brand-navy mb-8 leading-[0.95]">
+              Industry <span className="text-brand-teal">Insights</span> & Updates
+            </h1>
+            <p className="text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto">
+              Stay updated with the latest in medical cold chain, laboratory standards, and clinical infrastructure innovations.
+            </p>
+          </div>
 
-          <AnimatePresence mode="wait">
-            {filtered.length > 0 ? (
-              <motion.div
-                key={activeCategory + searchQuery}
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
-              >
-                {filtered.map((post, i) => {
-                  const c = categoryColors[post.category];
-                  return (
-                    <motion.article
-                      key={post.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.08 }}
-                      whileHover={{ y: -6 }}
-                      className="group bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 cursor-pointer flex flex-col"
-                    >
-                      {/* Image */}
-                      <div className="h-56 overflow-hidden relative">
-                        <img
-                          src={post.image}
-                          alt={post.title}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                        <div className="absolute top-4 left-4">
-                          <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full ${c.bg} ${c.text}`}>
-                            {post.category}
-                          </span>
-                        </div>
-                        <div className="absolute top-4 right-4">
-                          <span className="bg-black/40 backdrop-blur-sm text-white text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
-                            <Clock size={10} /> {post.readTime}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="p-7 flex flex-col flex-grow">
-                        <div className="flex items-center gap-4 text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-4">
-                          <span className="flex items-center gap-1.5"><Calendar size={11} />{post.date}</span>
-                          <span className="flex items-center gap-1.5"><User size={11} />{post.author}</span>
-                        </div>
-                        <h3 className="text-xl font-heading font-bold text-brand-navy group-hover:text-brand-teal transition-colors leading-snug mb-3 line-clamp-2">
-                          {post.title}
-                        </h3>
-                        <p className="text-gray-500 text-sm leading-relaxed mb-5 line-clamp-2 flex-grow">
-                          {post.excerpt}
-                        </p>
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-1.5 mb-5">
-                          {post.tags.slice(0, 2).map(tag => (
-                            <span key={tag} className="text-[10px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full flex items-center gap-1">
-                              <Tag size={8} /> {tag}
-                            </span>
-                          ))}
-                        </div>
-                        <button className="flex items-center gap-2 text-brand-navy hover:text-brand-teal font-bold text-sm uppercase tracking-widest transition-colors mt-auto group/btn">
-                          <span>Read Article</span>
-                          <ChevronRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-                        </button>
-                      </div>
-                    </motion.article>
-                  );
-                })}
-              </motion.div>
-            ) : (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-24 text-gray-400">
-                <BookOpen size={48} className="mx-auto mb-4 opacity-30" />
-                <p className="text-lg font-semibold">No articles found</p>
-                <p className="text-sm mt-2">Try a different search term or category</p>
-                <button onClick={() => { setActiveCategory('All'); setSearchQuery(''); }}
-                  className="mt-6 px-6 py-3 bg-brand-teal text-white rounded-xl font-bold hover:bg-brand-navy transition-colors">
-                  Clear Filters
-                </button>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {/* Search & Filter Bar */}
+          <div className="max-w-5xl mx-auto mb-20">
+            <div className="flex flex-col md:flex-row gap-6 items-center">
+              <div className="relative flex-grow w-full">
+                <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                <input
+                  type="text"
+                  placeholder="Search technical guides or news..."
+                  className="w-full pl-16 pr-6 py-5 bg-white border border-gray-100 rounded-[2rem] shadow-sm outline-none focus:border-brand-teal transition-all text-brand-navy text-lg"
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                />
+              </div>
+              <div className="flex flex-wrap justify-center gap-3 w-full md:w-auto">
+                {categories.map(cat => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`px-6 py-3 rounded-2xl text-sm font-bold transition-all duration-300 border ${
+                      activeCategory === cat
+                        ? 'bg-brand-navy text-white border-brand-navy shadow-lg'
+                        : 'bg-white text-gray-500 border-gray-100 hover:border-brand-teal hover:text-brand-teal'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section className="py-20 bg-white relative overflow-hidden border-t border-gray-100">
-        <div className="absolute inset-0 opacity-[0.2] pointer-events-none"
-          style={{
-            backgroundImage: 'linear-gradient(rgba(26,122,138,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(26,122,138,0.1) 1px, transparent 1px)',
-            backgroundSize: '50px 50px'
-          }} />
-        <div className="absolute -top-16 -right-16 w-80 h-80 bg-brand-teal/5 rounded-full blur-3xl" />
-        <div className="container mx-auto px-4 relative z-10 text-center max-w-2xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <div className="w-16 h-16 bg-brand-teal/10 border border-brand-teal/20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
-              <Mail size={28} className="text-brand-teal" />
-            </div>
-            <h2 className="text-4xl font-heading font-extrabold text-brand-navy mb-4">
-              Stay Ahead in <span className="text-brand-teal">MedTech</span>
-            </h2>
-            <p className="text-gray-500 mb-10 leading-relaxed">
-              Get the latest biomedical insights, compliance updates, and technical guides delivered directly to your inbox — no spam, ever.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Your professional email"
-                className="flex-grow px-5 py-4 rounded-xl bg-gray-50 border border-gray-200 text-brand-navy placeholder-gray-400 outline-none focus:border-brand-teal transition-colors"
-              />
-              <button className="bg-brand-teal hover:bg-brand-navy text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 whitespace-nowrap shadow-lg hover:shadow-brand-teal/20">
-                Subscribe
-              </button>
-            </div>
-            <p className="text-xs text-gray-400 mt-4 font-medium">Join 500+ biomedical professionals. Unsubscribe anytime.</p>
-          </motion.div>
+      {/* Featured Story */}
+      {featured && activeCategory === 'All' && !searchQuery && (
+        <section className="pb-24">
+          <div className="container mx-auto px-4">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="group relative bg-white rounded-[4rem] overflow-hidden shadow-2xl border border-gray-50 grid lg:grid-cols-2 gap-0"
+            >
+              <div className="h-[400px] lg:h-[600px] overflow-hidden">
+                <img 
+                  src={featured.image} 
+                  alt={featured.title} 
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-12 lg:p-20 flex flex-col justify-center">
+                <div className="flex items-center gap-4 mb-8">
+                  <span className="px-4 py-1.5 bg-brand-teal/10 text-brand-teal rounded-full text-[10px] font-black uppercase tracking-widest">
+                    {featured.category}
+                  </span>
+                  <span className="text-gray-400 text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                    <Calendar size={14} /> {featured.date}
+                  </span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-heading font-black text-brand-navy mb-8 leading-tight group-hover:text-brand-teal transition-colors">
+                  {featured.title}
+                </h2>
+                <p className="text-gray-500 text-xl leading-relaxed mb-12">
+                  {featured.excerpt}
+                </p>
+                <button 
+                  onClick={() => setSelectedPost(featured)}
+                  className="self-start flex items-center justify-between w-full sm:w-auto sm:min-w-[260px] bg-brand-navy text-white px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] group/btn transition-all duration-300 hover:bg-brand-teal shadow-2xl"
+                >
+                  <span>VIEW FULL REPORT</span>
+                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-all">
+                    <ArrowUpRight size={18} />
+                  </div>
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* Grid Section */}
+      <section className="pb-32">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {filtered.map((post, i) => (
+              <motion.article
+                key={post.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group flex flex-col h-full bg-white rounded-[3rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(26,122,138,0.12)] transition-all duration-700"
+              >
+                <div className="h-72 overflow-hidden relative">
+                  <img 
+                    src={post.image} 
+                    alt={post.title} 
+                    className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+                  />
+                  <div className="absolute top-8 left-8">
+                    <span className="bg-white/90 backdrop-blur-md px-5 py-2 rounded-xl text-[10px] font-black text-brand-navy uppercase tracking-widest shadow-xl border border-white/20">
+                      {post.category}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-10 flex flex-col flex-grow">
+                  <div className="text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-6 flex items-center gap-2">
+                    <span className="w-2 h-2 bg-brand-teal rounded-full" />
+                    {post.date}
+                  </div>
+                  <h3 className="text-2xl font-heading font-black text-brand-navy mb-6 group-hover:text-brand-teal transition-colors duration-500 line-clamp-2 leading-tight">
+                    {post.title}
+                  </h3>
+                  <p className="text-gray-500 text-base leading-relaxed mb-10 line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                  <div className="mt-auto pt-8 border-t border-gray-50">
+                    <button 
+                      onClick={() => setSelectedPost(post)}
+                      className="flex items-center justify-between w-full bg-brand-navy text-white px-8 py-5 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] group/btn hover:bg-brand-teal transition-all duration-300 shadow-lg"
+                    >
+                      <span>VIEW ARTICLE</span>
+                      <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover/btn:translate-x-1 transition-transform">
+                        <ArrowUpRight size={14} />
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final Newsletter */}
+      <section className="py-32 bg-brand-navy relative overflow-hidden">
+        <div className="absolute inset-0 bg-blueprint opacity-10" />
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-8">
+            Never miss a <span className="text-brand-teal">Technical Update</span>
+          </h2>
+          <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
+            Get professional insights and regulatory updates from Auronix directly to your inbox.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+            <input 
+              type="email" 
+              placeholder="Email Address" 
+              className="flex-grow px-8 py-5 rounded-2xl bg-white/5 border border-white/10 text-white outline-none focus:border-brand-teal transition-all"
+            />
+            <button className="bg-brand-teal text-white font-black px-12 py-5 rounded-2xl hover:bg-white hover:text-brand-navy transition-all duration-300 shadow-2xl">
+              SUBSCRIBE
+            </button>
+          </div>
         </div>
       </section>
     </div>
