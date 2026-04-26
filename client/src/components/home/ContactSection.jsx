@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
 import { FaInstagram } from 'react-icons/fa';
-import api from '../../api/axios';
+
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -15,19 +15,21 @@ const ContactSection = () => {
   });
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setStatus('loading');
-    try {
-      await api.post('/api/enquiry', formData);
+    
+    // Simulate API call for static site
+    setTimeout(() => {
+      console.log('Enquiry Form Submitted:', formData);
       setStatus('success');
       setFormData({ name: '', organization: '', phone: '', email: '', category: 'ICU', message: '' });
       setTimeout(() => setStatus('idle'), 5000);
-    } catch (err) {
-      console.error(err);
-      setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
-    }
+      
+      // Optional: Open WhatsApp with message
+      const whatsappMsg = `New Enquiry from ${formData.name} (%2B${formData.phone}) for ${formData.category}: ${formData.message}`;
+      window.open(`https://wa.me/919112223296?text=${whatsappMsg}`, '_blank');
+    }, 1000);
   };
 
   const handleChange = (e) => {

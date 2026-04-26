@@ -32,11 +32,11 @@ const Compliance = () => {
             >
               Industry Accreditation
             </motion.div>
-            <h2 className="text-5xl font-heading font-extrabold mb-8 leading-tight">
-              Compliance You <br />
+            <h2 className="text-3xl md:text-5xl font-heading font-extrabold mb-6 md:mb-8 leading-tight">
+              Compliance You <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-blue">Can Audit</span>
             </h2>
-            <p className="text-gray-400 text-xl leading-relaxed">
+            <p className="text-gray-400 text-lg md:text-xl leading-relaxed">
               Every device sourced through CDSCO-registered channels. 
               <span className="text-brand-teal font-bold"> ISO 13485 supplier verification</span> on every SKU. 
               Strict quality control at every stage.
@@ -60,7 +60,7 @@ const Compliance = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -5, borderColor: '#2BA8C5' }}
-              className="bg-white/5 border border-white/10 p-8 rounded-[2rem] flex flex-col items-center text-center group transition-all backdrop-blur-sm"
+              className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] flex flex-col items-center text-center group transition-all backdrop-blur-sm"
             >
               <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-5 group-hover:bg-brand-teal transition-all duration-500 shadow-inner">
                 <cert.icon className="text-brand-teal group-hover:text-white transition-colors" size={28} />
@@ -83,7 +83,7 @@ const Compliance = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 + (i * 0.1) }}
-              className="flex items-start gap-5 bg-white/[0.03] p-8 rounded-3xl border border-white/10 hover:bg-white/[0.05] transition-colors"
+              className="flex items-start gap-4 md:gap-5 bg-white/[0.03] p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/10 hover:bg-white/[0.05] transition-colors"
             >
               <div className="w-10 h-10 rounded-full bg-brand-teal/20 flex items-center justify-center shrink-0">
                 <CheckCircle2 className="text-brand-teal" size={20} />

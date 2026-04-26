@@ -80,7 +80,7 @@ const Navbar = () => {
           <img
             src="/images/logo.png"
             alt="Auronix Infinia Pvt. Ltd."
-            className={`${scrolled ? 'h-18' : 'h-26'} w-auto object-contain transition-all duration-300`}
+            className={`${scrolled ? 'h-14 lg:h-18' : 'h-18 lg:h-26'} w-auto object-contain transition-all duration-300`}
             style={{ filter: 'url(#remove-white)' }}
           />
         </Link>
@@ -183,7 +183,9 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 top-16 bg-white z-40 lg:hidden overflow-y-auto"
+            className={`fixed inset-0 z-40 lg:hidden overflow-y-auto bg-white transition-all duration-300 ${
+              scrolled ? 'pt-24' : 'pt-32'
+            }`}
           >
             <div className="p-6 flex flex-col space-y-4">
               {navLinks.map((link) => (

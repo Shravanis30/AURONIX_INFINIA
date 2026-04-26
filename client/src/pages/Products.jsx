@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Filter, MessageCircle, FileText, ChevronRight } from 'lucide-react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { products as initialProducts } from '../data/products';
 
 const categories = [
   "All",
@@ -17,26 +16,22 @@ const categories = [
   "Consumables & Accessories"
 ];
 
+import { products as allProducts } from '../data/products';
+
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCategory = searchParams.get('category') || "All";
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState(initialProducts);
 
-  useEffect(() => {
-    let result = initialProducts;
-    if (activeCategory !== "All") {
-      result = result.filter(p => p.category === activeCategory);
-    }
-    if (searchQuery) {
-      result = result.filter(p => 
-        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.desc.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
-    setFilteredProducts(result);
-  }, [activeCategory, searchQuery]);
+  const filteredProducts = allProducts.filter(p => {
+    const matchCategory = activeCategory === "All" || p.category === activeCategory;
+    const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        p.desc.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchCategory && matchSearch;
+  });
+
+
 
   const handleCategoryChange = (cat) => {
     setActiveCategory(cat);
@@ -66,7 +61,7 @@ const Products = () => {
             animate={{ opacity: 1, y: 0 }}
           >
             <span className="text-brand-teal font-bold tracking-[0.2em] uppercase text-sm mb-4 block">Medical Solutions</span>
-            <h1 className="text-5xl md:text-6xl font-heading font-extrabold text-white mb-6">
+            <h1 className="text-4xl md:text-6xl font-heading font-extrabold text-white mb-6">
               Product <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-blue-400">Portfolio</span>
             </h1>
             <p className="text-gray-400 max-w-xl text-lg leading-relaxed">
@@ -80,31 +75,32 @@ const Products = () => {
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Sidebar Category Filter */}
           <aside className="lg:w-1/4">
-            <div className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 p-8 border border-gray-100 sticky top-28">
-              <div className="mb-8">
-                <h4 className="text-brand-navy font-heading font-bold text-lg mb-6 flex items-center">
+            <div className="bg-white rounded-3xl shadow-xl shadow-gray-200/50 p-6 md:p-8 border border-gray-100 lg:sticky lg:top-28">
+              <div className="mb-6 lg:mb-8">
+                <h4 className="text-brand-navy font-heading font-bold text-lg mb-4 md:mb-6 flex items-center">
                   <Filter size={18} className="mr-2 text-brand-teal" />
                   Categories
                 </h4>
-                <div className="space-y-2">
+                {/* Mobile Categories (Horizontal Scroll) */}
+                <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-2 lg:space-y-2 no-scrollbar">
                   {categories.map(cat => (
                     <button
                       key={cat}
                       onClick={() => handleCategoryChange(cat)}
-                      className={`w-full text-left px-5 py-3 rounded-xl text-sm font-bold transition-all flex items-center justify-between group ${
+                      className={`whitespace-nowrap lg:whitespace-normal text-left px-4 lg:px-5 py-2.5 lg:py-3 rounded-xl text-xs lg:text-sm font-bold transition-all flex items-center justify-between group shrink-0 ${
                         activeCategory === cat 
                         ? 'bg-brand-teal text-white shadow-lg shadow-brand-teal/20' 
-                        : 'text-gray-500 hover:bg-brand-light hover:text-brand-navy'
+                        : 'bg-gray-50 lg:bg-transparent text-gray-500 hover:bg-brand-light hover:text-brand-navy border border-transparent lg:border-none'
                       }`}
                     >
                       <span>{cat}</span>
-                      <ChevronRight size={14} className={`transition-transform ${activeCategory === cat ? 'translate-x-1' : 'opacity-0 group-hover:opacity-100'}`} />
+                      <ChevronRight size={14} className={`hidden lg:block transition-transform ${activeCategory === cat ? 'translate-x-1' : 'opacity-0 group-hover:opacity-100'}`} />
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-8 border-t border-gray-100">
+              <div className="pt-6 lg:pt-8 border-t border-gray-100">
                 <h4 className="text-brand-navy font-heading font-bold text-lg mb-4">Search</h4>
                 <div className="relative">
                   <input 
@@ -146,7 +142,7 @@ const Products = () => {
                       </div>
                     </div>
                     
-                    <div className="p-8">
+                    <div className="p-6 md:p-8">
                       <h3 className="text-xl font-heading font-bold text-brand-navy mb-3 group-hover:text-brand-teal transition-colors">
                         {product.name}
                       </h3>

@@ -54,7 +54,7 @@ const StatsBar = () => {
       <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #1A7A8A 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 divide-x divide-white/10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-12 md:gap-y-0 lg:divide-x divide-white/10">
           {stats.map((stat, i) => (
             <Counter 
               key={i} 

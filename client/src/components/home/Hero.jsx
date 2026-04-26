@@ -33,7 +33,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="space-y-8"
+          className="space-y-6 md:space-y-8 text-center lg:text-left"
         >
           <div className="inline-flex items-center space-x-2 bg-brand-teal/10 text-brand-teal px-4 py-2 rounded-full font-bold text-sm">
             <span className="relative flex h-2 w-2">
@@ -43,12 +43,12 @@ const Hero = () => {
             <span>Pune's Specialist Medical Equipment Partner</span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-heading font-extrabold text-brand-navy leading-tight">
-            Every Product We Stock, <br />
-            <span className="text-brand-teal">We Can Support.</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-extrabold text-brand-navy leading-[1.1] md:leading-tight">
+            Every Product We Stock, <br className="hidden md:block" />
+            <span className="text-brand-teal"> We Can Support.</span>
           </h1>
 
-          <p className="text-xl text-gray-600 leading-relaxed max-w-xl">
+          <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
             Deep expertise in ICU, OT & Respiratory equipment. 
             <span className="font-bold text-brand-navy"> Pune delivery in 48 hrs.</span> On-site installation included with every purchase.
           </p>
@@ -129,20 +129,20 @@ const Hero = () => {
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="absolute top-10 right-0 glass shadow-2xl p-4 rounded-2xl border-l-4 border-brand-teal z-20"
+              className="absolute top-4 md:top-10 right-0 md:-right-4 glass shadow-2xl p-3 md:p-4 rounded-2xl border-l-4 border-brand-teal z-20 scale-75 md:scale-100"
             >
-              <p className="text-brand-teal font-bold text-xs uppercase tracking-widest">4-Hr Response</p>
-              <p className="text-brand-navy font-extrabold text-lg">AMC Support</p>
+              <p className="text-brand-teal font-bold text-[10px] md:text-xs uppercase tracking-widest">4-Hr Response</p>
+              <p className="text-brand-navy font-extrabold text-sm md:text-lg">AMC Support</p>
             </motion.div>
 
             <motion.div
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.7 }}
-              className="absolute bottom-10 left-0 bg-white p-4 rounded-2xl shadow-2xl border-l-4 border-brand-orange z-20"
+              className="absolute bottom-4 md:bottom-10 left-0 md:-left-4 bg-white p-3 md:p-4 rounded-2xl shadow-2xl border-l-4 border-brand-orange z-20 scale-75 md:scale-100"
             >
-              <p className="text-brand-orange font-bold text-xs uppercase tracking-widest">48-Hr Delivery</p>
-              <p className="text-brand-navy font-extrabold text-lg">Pune & PCMC</p>
+              <p className="text-brand-orange font-bold text-[10px] md:text-xs uppercase tracking-widest">48-Hr Delivery</p>
+              <p className="text-brand-navy font-extrabold text-sm md:text-lg">Pune & PCMC</p>
             </motion.div>
 
             {/* Carousel Indicators */}

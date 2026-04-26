@@ -49,8 +49,8 @@ const WhoWeServe = () => {
               <span className="w-2 h-2 bg-brand-teal rounded-full animate-pulse"></span>
               <span className="text-brand-teal text-[10px] font-bold uppercase tracking-widest">Our Ecosystem</span>
             </div>
-            <h2 className="text-5xl md:text-6xl font-heading font-extrabold text-brand-navy leading-[1.1]">
-              Engineered for <br />
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-extrabold text-brand-navy leading-[1.1]">
+              Engineered for <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-blue">Every Healthcare Environment</span>
             </h2>
           </motion.div>
@@ -75,7 +75,7 @@ const WhoWeServe = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-              className="group relative h-[600px] rounded-[3.5rem] overflow-hidden bg-white shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_40px_80px_rgba(26,122,138,0.15)] transition-all duration-700"
+              className="group relative h-[500px] md:h-[600px] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden bg-white shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_40px_80px_rgba(26,122,138,0.15)] transition-all duration-700"
             >
               {/* Image Background with Complex Masking */}
               <div className="absolute inset-0 h-2/3 overflow-hidden">
@@ -88,8 +88,8 @@ const WhoWeServe = () => {
               </div>
 
               {/* Card Content Overlay */}
-              <div className="absolute inset-0 flex flex-col justify-end p-10 translate-y-8 group-hover:translate-y-0 transition-transform duration-700">
-                <div className="bg-white rounded-[2.5rem] p-8 shadow-2xl relative">
+              <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-10 translate-y-6 group-hover:translate-y-0 transition-transform duration-700">
+                <div className="bg-white rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 shadow-2xl relative">
                   {/* Floating Icon */}
                   <div className="absolute -top-10 left-8 w-20 h-20 rounded-3xl bg-brand-navy text-white flex items-center justify-center shadow-2xl group-hover:bg-brand-teal group-hover:-translate-y-2 transition-all duration-500">
                     <buyer.icon size={32} />

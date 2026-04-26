@@ -85,8 +85,8 @@ const ProductCategories = () => {
             <span className="inline-block bg-brand-teal/10 text-brand-teal text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-lg mb-5 border border-brand-teal/20">
               Expertise & Precision
             </span>
-            <h2 className="text-5xl md:text-6xl font-heading font-extrabold text-brand-navy leading-[1.1]">
-              Our Product <br />
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-extrabold text-brand-navy leading-[1.1]">
+              Our Product <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-blue">Categories</span>
             </h2>
           </motion.div>
@@ -129,7 +129,7 @@ const CategoryCard = ({ cat, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.6 }}
-      className="group relative h-[450px] rounded-[2.5rem] overflow-hidden cursor-pointer bg-brand-navy"
+      className="group relative h-[400px] md:h-[450px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden cursor-pointer bg-brand-navy"
     >
       {/* Background Image with Hover Zoom */}
       <img
@@ -142,7 +142,7 @@ const CategoryCard = ({ cat, index }) => {
       <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/40 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500" />
 
       {/* Content Container */}
-      <div className="absolute inset-0 p-10 flex flex-col justify-end">
+      <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
         {/* Category Badge (Floats up on hover) */}
         <div className="mb-4 transform transition-transform duration-500 group-hover:-translate-y-2">
           <span className="bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">

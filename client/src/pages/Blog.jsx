@@ -1,126 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Search, Calendar, User, ArrowRight, Clock, Tag, BookOpen, ChevronRight, Mail, ArrowUpRight } from 'lucide-react';
+import { blogs as posts } from '../data/blogs';
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
-
-  const posts = [
-    {
-      title: "The Complete Guide to Vaccine Transportation & Cold Chain Integrity",
-      category: "Cold Chain",
-      excerpt: "Ensuring 100% compliance during vaccine transit is critical. Learn about the latest in passive vs active cooling technologies.",
-      image: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80&w=1200",
-      date: "24/04/2024",
-      author: "Biomedical Team",
-      readTime: "10 min read",
-      featured: true,
-      tags: ["Vaccines", "Cold Chain", "Logistics"],
-    },
-    {
-      title: "Blood Bank Refrigerator Buying Guide: 5 Metrics That Matter",
-      category: "Blood Bank",
-      excerpt: "From temperature uniformity to battery backup — what hospital procurement teams must verify before buying.",
-      image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1200",
-      date: "12/04/2024",
-      author: "Technical Expert",
-      readTime: "8 min read",
-      tags: ["Blood Bank", "Buying Guide", "Standards"],
-    },
-    {
-      title: "Ice Lined Refrigerators: Price, Maintenance, and Solar Options",
-      category: "Cold Chain",
-      excerpt: "A comprehensive breakdown of ILR technology for rural healthcare centers with intermittent power supply.",
-      image: "https://images.unsplash.com/photo-1583324113626-70df0f4deaab?auto=format&fit=crop&q=80&w=1200",
-      date: "05/04/2024",
-      author: "Field Team",
-      readTime: "12 min read",
-      tags: ["ILR", "Solar", "Rural Health"],
-    },
-    {
-      title: "ULT Freezer -86°C: Calibration and Long-term Stability Protocols",
-      category: "Storage",
-      excerpt: "How to maintain ultra-low temperatures for sensitive biological samples and DNA research libraries.",
-      image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80&w=1200",
-      date: "28/03/2024",
-      author: "Biomedical Team",
-      readTime: "15 min read",
-      tags: ["ULT", "Calibration", "Research"],
-    },
-    {
-      title: "Medical Equipment Maintenance: NABH Audit Readiness 2024",
-      category: "Compliance",
-      excerpt: "Ensure your facility passes every inspection with our updated documentation and calibration checklist.",
-      image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200",
-      date: "15/03/2024",
-      author: "Quality Head",
-      readTime: "20 min read",
-      tags: ["NABH", "Audit", "Compliance"],
-    },
-    {
-      title: "Modular OT Systems: Efficiency and Infection Control Standards",
-      category: "Surgery",
-      excerpt: "Designing sterile environments for modern surgeries. A look into airflow systems and antimicrobial wall panels.",
-      image: "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=1200",
-      date: "02/03/2024",
-      author: "Infra Team",
-      readTime: "18 min read",
-      tags: ["Modular OT", "Sterilization", "Design"],
-    },
-    {
-      title: "How to Choose the Right Laboratory Freezer for Sensitive Samples",
-      category: "Storage",
-      excerpt: "Not all freezers are created equal. Discover the critical differences between spark-proof, flammable storage, and standard lab units.",
-      image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80&w=1200",
-      date: "25/02/2024",
-      author: "Lab Specialist",
-      readTime: "12 min read",
-      tags: ["Laboratory", "Storage", "Safety"],
-    },
-    {
-      title: "Solar-Powered Medical Refrigeration: A Game Changer for Rural Health",
-      category: "Cold Chain",
-      excerpt: "Bridging the energy gap in remote locations. How SDD (Solar Direct Drive) technology is saving lives in off-grid areas.",
-      image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=1200",
-      date: "18/02/2024",
-      author: "Field Engineer",
-      readTime: "9 min read",
-      tags: ["Solar", "Rural Health", "Innovation"],
-    },
-    {
-      title: "Oxygen Concentrators: Maintenance Checklist for Long-Term Home Care",
-      category: "Home Care",
-      excerpt: "Keep your devices running at peak efficiency. Simple weekly and monthly steps to ensure high-purity oxygen delivery.",
-      image: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80&w=900",
-      date: "10/02/2024",
-      author: "Service Team",
-      readTime: "7 min read",
-      tags: ["Oxygen", "Home Care", "Maintenance"],
-    },
-    {
-      title: "The Future of Smart Hospitals: IoT in Medical Gas Systems",
-      category: "Innovation",
-      excerpt: "Real-time monitoring of oxygen levels and pressure drops. How connected sensors are preventing critical hospital emergencies.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=900",
-      date: "05/02/2024",
-      author: "Tech Lead",
-      readTime: "11 min read",
-      tags: ["IoT", "Smart Hospital", "Safety"],
-    },
-    {
-      title: "Decontamination Protocols for Shared Patient Equipment",
-      category: "Clinical",
-      excerpt: "Best practices for cleaning and disinfecting high-touch surfaces in multi-patient settings to prevent HAIs.",
-      image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=900",
-      date: "28/01/2024",
-      author: "Nursing Lead",
-      readTime: "6 min read",
-      tags: ["Clinical", "Sterilization", "HAI"],
-    }
-  ];
-
   const [selectedPost, setSelectedPost] = useState(null);
 
   const categories = ['All', ...new Set(posts.map(p => p.category))];

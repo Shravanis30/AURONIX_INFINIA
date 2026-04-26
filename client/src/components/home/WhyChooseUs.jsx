@@ -63,8 +63,8 @@ const WhyChooseUs = () => {
               <div className="w-12 h-px bg-brand-teal"></div>
               <span className="text-brand-teal text-xs font-bold uppercase tracking-[0.4em]">The Auronix Advantage</span>
             </div>
-            <h2 className="text-5xl md:text-6xl font-heading font-extrabold text-brand-navy leading-tight">
-              The 5 Pillars of <br />
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading font-extrabold text-brand-navy leading-tight">
+              The 5 Pillars of <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-blue">Auronix Excellence</span>
             </h2>
           </motion.div>
@@ -89,7 +89,7 @@ const WhyChooseUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: i * 0.12 }}
-              className={`group relative p-10 bg-white rounded-[3rem] border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_60px_rgba(26,122,138,0.12)] transition-all duration-700 ${i === 4 ? 'md:col-span-2 lg:col-span-1' : ''}`}
+              className={`group relative p-6 md:p-10 bg-white rounded-[2rem] md:rounded-[3rem] border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_60px_rgba(26,122,138,0.12)] transition-all duration-700 ${i === 4 ? 'md:col-span-2 lg:col-span-1' : ''}`}
             >
               {/* Card Accent Glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-brand-teal/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-[3rem]" />
@@ -129,7 +129,7 @@ const WhyChooseUs = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="lg:col-span-3 mt-12 bg-brand-navy rounded-[3rem] p-12 relative overflow-hidden group flex flex-col md:flex-row items-center justify-between gap-8"
+            className="lg:col-span-3 mt-8 md:mt-12 bg-brand-navy rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-12 relative overflow-hidden group flex flex-col md:flex-row items-center justify-between gap-8"
           >
             <div className="absolute inset-0 bg-brand-teal/10 opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="relative z-10 text-center md:text-left">

@@ -1,15 +1,12 @@
-import React, { useRef, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useRef, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { FileText, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
-
-import { products as allProducts } from '../../data/products';
 import { Link } from 'react-router-dom';
-
-const products = allProducts.slice(0, 6);
+import { products as allProducts } from '../../data/products';
 
 const ProductCard = ({ product }) => (
   <motion.div 
-    className="min-w-[320px] md:min-w-[400px] bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 mx-4"
+    className="min-w-[280px] md:min-w-[400px] bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 mx-3 md:mx-4"
     whileHover={{ y: -10 }}
   >
     <Link to={`/products/${product.slug}`}>
@@ -24,7 +21,7 @@ const ProductCard = ({ product }) => (
         </div>
       </div>
     </Link>
-    <div className="p-8">
+    <div className="p-6 md:p-8">
       <Link to={`/products/${product.slug}`}>
         <h3 className="text-2xl font-heading font-bold text-brand-navy mb-3 hover:text-brand-teal transition-colors">{product.name}</h3>
       </Link>
@@ -46,9 +43,11 @@ const ProductCard = ({ product }) => (
 );
 
 const FeaturedProducts = () => {
+  const products = allProducts.slice(0, 6);
   const scrollRef = useRef(null);
 
   useEffect(() => {
+    if (products.length === 0) return;
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 

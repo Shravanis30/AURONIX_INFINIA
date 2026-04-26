@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MessageCircle, FileText, CheckCircle2, Truck, ShieldCheck, Settings, ArrowLeft } from 'lucide-react';
@@ -6,20 +6,18 @@ import { products } from '../data/products';
 
 const ProductDetail = () => {
   const { slug } = useParams();
-
-  // Find product by slug
   const product = products.find(p => p.slug === slug);
 
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
 
   if (!product) {
     return (
-      <div className="pt-32 text-center">
-        <h2 className="text-2xl font-bold">Product not found</h2>
-        <Link to="/products" className="text-brand-teal hover:underline mt-4 inline-block">Back to Catalog</Link>
+      <div className="pt-40 text-center min-h-screen">
+        <h2 className="text-4xl font-heading font-black text-brand-navy mb-4">Product Not Found</h2>
+        <p className="text-gray-500 mb-8">The requested equipment might have been moved or removed.</p>
+        <Link to="/products" className="bg-brand-navy text-white px-8 py-3 rounded-xl font-bold hover:bg-brand-teal transition-all">Back to Catalog</Link>
       </div>
     );
   }
@@ -67,11 +65,11 @@ const ProductDetail = () => {
             className="space-y-8"
           >
             <div>
-              <div className="bg-brand-teal/10 text-brand-teal text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-4">
+              <div className="bg-brand-teal/10 text-brand-teal text-[10px] md:text-xs font-bold px-3 md:px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-3 md:mb-4">
                 {product.category}
               </div>
-              <h1 className="text-4xl md:text-6xl font-heading font-extrabold text-brand-navy mb-6 leading-tight">{product.name}</h1>
-              <p className="text-gray-500 text-lg leading-relaxed">{product.desc}</p>
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-extrabold text-brand-navy mb-4 md:mb-6 leading-tight">{product.name}</h1>
+              <p className="text-gray-500 text-base md:text-lg leading-relaxed">{product.desc}</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -135,16 +133,21 @@ const ProductDetail = () => {
               </button>
             </div>
             <div className="p-0">
-              <table className="w-full text-left">
-                <tbody>
-                  {Object.entries(product.specs).map(([key, val], i) => (
-                    <tr key={key} className={`border-b border-white/5 transition-colors hover:bg-white/5 ${i % 2 === 0 ? 'bg-white/[0.02]' : ''}`}>
-                      <td className="p-8 text-brand-teal font-heading font-bold text-sm uppercase tracking-[0.2em] w-1/3">{key}</td>
-                      <td className="p-8 text-gray-300 font-medium">{val}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <div className="flex flex-col">
+                {Object.entries(product.specs).map(([key, val], i) => (
+                  <div 
+                    key={key} 
+                    className={`flex flex-col md:flex-row border-b border-white/5 transition-colors hover:bg-white/5 ${i % 2 === 0 ? 'bg-white/[0.02]' : ''}`}
+                  >
+                    <div className="p-4 md:p-8 text-brand-teal font-heading font-bold text-[10px] md:text-sm uppercase tracking-[0.2em] md:w-1/3 bg-white/5 md:bg-transparent">
+                      {key}
+                    </div>
+                    <div className="p-4 md:p-8 text-gray-300 font-medium text-sm md:text-base">
+                      {val}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

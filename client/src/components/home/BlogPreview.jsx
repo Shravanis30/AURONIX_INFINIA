@@ -46,8 +46,8 @@ const BlogPreview = () => {
               <span className="h-px w-16 bg-brand-teal"></span>
               <span className="text-brand-teal text-xs font-black uppercase tracking-[0.4em]">Expert Insights</span>
             </motion.div>
-            <h2 className="text-6xl md:text-7xl font-heading font-black text-brand-navy leading-[0.95] tracking-tighter">
-              Latest <br />
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-heading font-black text-brand-navy leading-[0.95] tracking-tighter">
+              Latest <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-blue italic">Resources</span>
             </h2>
           </div>
@@ -57,7 +57,7 @@ const BlogPreview = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <Link to="/blog" className="group relative inline-flex items-center gap-6 bg-brand-navy text-white px-12 py-6 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:shadow-brand-teal/30">
+            <Link to="/blog" className="group relative inline-flex items-center gap-4 md:gap-6 bg-brand-navy text-white px-8 md:px-12 py-4 md:py-6 rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:shadow-brand-teal/30">
               <div className="absolute inset-0 bg-brand-teal translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               <span className="relative z-10 text-sm font-black uppercase tracking-widest">Access the Knowledge Hub</span>
               <ArrowRight size={20} className="relative z-10 group-hover:translate-x-2 transition-transform" />
@@ -73,10 +73,10 @@ const BlogPreview = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-              className="group flex flex-col h-full bg-white rounded-[3rem] overflow-hidden shadow-[0_15px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_100px_rgba(26,122,138,0.18)] transition-all duration-1000"
+              className="group flex flex-col h-full bg-white rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-[0_15px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_100px_rgba(26,122,138,0.18)] transition-all duration-1000"
             >
               {/* Image Container with Reveal */}
-              <div className="relative h-[320px] overflow-hidden shrink-0">
+              <div className="relative h-[250px] md:h-[320px] overflow-hidden shrink-0">
                 <img 
                   src={blog.image} 
                   alt={blog.title} 
@@ -96,7 +96,7 @@ const BlogPreview = () => {
               </div>
 
               {/* Content Area */}
-              <div className="p-12 flex flex-col flex-grow relative bg-white">
+              <div className="p-8 md:p-12 flex flex-col flex-grow relative bg-white">
                 <div className="flex items-center gap-3 text-gray-400 text-[10px] font-bold uppercase tracking-widest mb-6">
                   <span className="w-1 h-1 bg-brand-teal rounded-full" />
                   <span>{blog.date}</span>
