@@ -1,0 +1,4 @@
+/* Reset or empty App.css to use index.css exclusively */
+#root {
+  width: 100%;
+}
